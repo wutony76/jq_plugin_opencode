@@ -1,7 +1,7 @@
 (function($){
   //import order js. css.
   document.write('<link rel=stylesheet type="text/css" href="opencode/css/style.css">');
-  document.write('<script src="opencode/settings.js"></script>');
+  document.write('<script src="opencode/js/settings.js"></script>');
 
 
   $.fn.opencode = function(settings){
@@ -44,7 +44,7 @@
   } 
 
   function addIssue (root, data) {
-    let issue = '第'.concat(_addSpanHtml(data), '期')
+    let issue = '第'.concat(_addSpanHtml(data, 'red'), '期')
     root.append(_addDivHtml(issue, 'issue-group'))
   } 
 
@@ -88,7 +88,7 @@
     let headStr; 
     if (className) headStr = "<span class=".concat(className, '>') 
     else headStr= "<span>"
-    let endStr = '</apan>'
+    let endStr = '</span>'
     return headStr.concat(val, endStr)
   }
   function _addDivHtml (val, className) {

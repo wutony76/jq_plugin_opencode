@@ -9,6 +9,12 @@
 	align-items: center;
 } 
 
+.issue-group span.red {
+	margin-left: 5px;
+	margin-right: 5px;
+	color:#ff0000;
+} 
+
 .test-dev .open-code, 
 .balls-group {
 	width: 80%;
