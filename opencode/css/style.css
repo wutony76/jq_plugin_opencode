@@ -1,0 +1,22 @@
+
+.issue-group {
+	width: 80%;
+	height: 25%;
+	margin: 0 auto;
+	text-align: left;
+
+	display: flex;
+	align-items: center;
+} 
+
+.test-dev .open-code, 
+.balls-group {
+	width: 80%;
+	height: 75%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #ff0000;
+	margin: 0 auto;
+} 

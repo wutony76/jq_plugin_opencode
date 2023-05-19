@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title> Dev Working ...</title>
+
+  <style>
+    /* div {
+      width:50px;
+      height:50px;
+      background-color:#FFCC99;
+      border:1px solid black;
+      position:relatie;
+      float:left;
+    } */
+
+    .test-dev{
+      width: 500px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="test-dev">
+    <div class="open-code">
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+    </div>
+  </div>
+  <hr/>
+  <br/>
+
+  <div id="open-code-test"></div>
+
+  <!-- <link rel=stylesheet type="text/css" href="opencode/css/style.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script src="opencode/opencode.js"></script>
+  <script type="module">
+    // import a from './opencode/test.js'
+    // console.log(a)
+    
+    $(function () { 
+      $("#open-code-test").opencode({
+        width: '500px',
+        height: '200px',
+        type: 1,
+        api: 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138'
+      });
+    })
+  </script>
+
+</body>
+</html>
