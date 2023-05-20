@@ -28,3 +28,14 @@
 	border: 1px solid #ff0000;
 	margin: 0 auto;
 } 
+
+
+.balls-group .ball {
+	width: 12.3%;
+}
+
+.balls-group .ball .ball-num {
+	background-image: url("../../opencode/images/type00/grey.jpg");
+	background-repeat: no-repeat;
+	
+}
