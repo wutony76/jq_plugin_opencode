@@ -2,6 +2,7 @@
   //import order js. css.
   document.write('<link rel=stylesheet type="text/css" href="opencode/css/style.css">');
   document.write('<script src="opencode/js/settings.js"></script>');
+  document.write('<script src="opencode/js/logic.js"></script>');
 
 
   $.fn.opencode = function(settings){
@@ -16,12 +17,13 @@
           $("span").html('').append($(this).html() + '完成!').show().fadeOut(1000);
         });
       }
-    };  
+    };
 
     var _settings = $.extend(defaultSettings, settings);
     console.log('-opencode settings = ', settings )
     // settings
     // var _settings = settings
+    _settings.colors = colors
     var _width = _settings.width 
     var _height = _settings.height
     var _info = getInfo(_settings.api)
@@ -29,6 +31,13 @@
 
     // console.log('-opencode settings = ', $(this).html())
     console.log('-opencode _info = ', _info)
+
+    var opencode = new BaseClass(root, _settings)
+    console.log('opencode >> ', opencode)
+
+    return; 
+
+
     addIssue(root, _info.issue)
     addBallGroup(root, _info)
 

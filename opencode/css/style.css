@@ -48,10 +48,22 @@
 	align-items: center;
 	justify-content: center;
 
+	padding-top:3%;
 	padding-right:4.5%;
 	border: 1px solid #ff00ff;
 }
 
+.balls-group .ball .ball-num-blue {
+	background-image: url("../../opencode/images/type00/blue.jpeg");
+}
+
+.balls-group .ball .ball-num-red {
+	background-image: url("../../opencode/images/type00/red.jpeg");
+}
+
+.balls-group .ball .ball-num-green {
+	background-image: url("../../opencode/images/type00/green.jpeg");
+}
 
 .balls-group .ball .ball-pet {
 	display: flex;
