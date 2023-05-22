@@ -51,7 +51,13 @@
         width: '500px',
         height: '200px',
         type: 1,
-        api: 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138'
+        // api: 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138'
+        api: 'http://www.google.com',
+        // 引用自定義解析api資料
+        apiGetInfoFunc: function () {
+          const api = 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138';
+          return getInfo(api)
+        }
       });
     })
   </script>

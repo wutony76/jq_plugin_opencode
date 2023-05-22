@@ -2,107 +2,42 @@
   //import order js. css.
   document.write('<link rel=stylesheet type="text/css" href="opencode/css/style.css">');
   document.write('<script src="opencode/js/settings.js"></script>');
-  document.write('<script src="opencode/js/logic.js"></script>');
-
+  document.write('<script src="opencode/js/utils.js"></script>');
+  document.write('<script src="opencode/js/BaseClass.js"></script>');
 
   $.fn.opencode = function(settings){
+    const root = $(this)
+    const _api = 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138';
+    // --defaultSettings
     var defaultSettings = {
-      bind : 'mouseover',
-      callback : function(){ 
-        $(this).animate({
-          opacity: 0.25,
-           left: '+=50',
-           height: 'toggle'
-        }, 3000,function(){
-          $("span").html('').append($(this).html() + '完成!').show().fadeOut(1000);
-        });
+      // _info: {
+      //   lotteryId: null,
+      //   issue: null, 
+      //   openCode: null,
+      //   pet: null 
+      // },
+      api: _api,
+      apiGetInfoFunc: function (apiUrl) {
+        console.log('apiGetInfoFunc url >>>', apiUrl)
+        return getInfo(apiUrl)
       }
     };
 
+    // --self settings
     var _settings = $.extend(defaultSettings, settings);
-    console.log('-opencode settings = ', settings )
-    // settings
-    // var _settings = settings
+    console.log('-opencode defaultSettings = ', defaultSettings.apiGetInfoFunc )
+    console.log('-opencode settings = ', settings, _settings.api)
+
     _settings.colors = colors
-    var _width = _settings.width 
-    var _height = _settings.height
-    var _info = getInfo(_settings.api)
-    const root = $(this)
+    _settings.info = defaultSettings.apiGetInfoFunc(_settings.api)
+    // _settings.getInfo = colors
+    // var _width = _settings.width 
+    // var _height = _settings.height
+    // var _info = getInfo(_settings.api)
+    // var _info = _settings.getInfo
 
     // console.log('-opencode settings = ', $(this).html())
-    console.log('-opencode _info = ', _info)
-
+    // console.log('-opencode _info = ', _info)
     var opencode = new BaseClass(root, _settings)
-    console.log('opencode >> ', opencode)
-
-    return; 
-
-
-    addIssue(root, _info.issue)
-    addBallGroup(root, _info)
-
-    //
-    $(this).css({
-      border: "1px solid #000",
-      width: _width,
-      height: _height,
-      "border-radius": "10px"
-    });
-    // $(this).css("width", _width);
-
-  } 
-
-  function addIssue (root, data) {
-    let issue = '第'.concat(_addSpanHtml(data, 'red'), '期')
-    root.append(_addDivHtml(issue, 'issue-group'))
-  } 
-
-  function addBallGroup (root, data) {
-    const arr = data.openCode ? data.openCode.split(','): ['-', '-', '-', '-', '-','-', '-' ]
-    const hasPet = data.pet ? data.pet : null
-    let balls = ''
-    arr.forEach((val) => {
-      balls += handleBallHtml(val, hasPet)
-    })
-    root.append(_addDivHtml(balls, 'balls-group'))
-  }
-
-  function getInfo(api) {
-    $.ajaxSettings.async=false;
-    var output = {};
-    $.get(api, (res) => {
-      console.log('getInfo = ', res)
-      if (res.code == 0) {
-        output = {
-          lotteryId: res.data.lotteryId,
-          issue: res.data.issue,
-          openCode: res.data.openCode,
-          pet: res.data.pet
-        } 
-      }
-      console.log('output = ', output)
-    })
-    return output
-  }
-
-  // start handle htmlStr
-  function handleBallHtml (val, val2) {
-    let ballNum = _addDivHtml(val, 'ball-num')
-    let ballPet = val2 ? _addDivHtml(val2, 'ball-pet'): ''
-    let ballGroup = ballNum + ballPet 
-    return _addDivHtml( ballGroup, 'ball')
-  }
-
-  function _addSpanHtml (val, className) {
-    let headStr; 
-    if (className) headStr = "<span class=".concat(className, '>') 
-    else headStr= "<span>"
-    let endStr = '</span>'
-    return headStr.concat(val, endStr)
-  }
-  function _addDivHtml (val, className) {
-    let headStr = "<div class=".concat(className, '>') 
-    let endStr = '</div>'
-    return headStr.concat(val, endStr)
   }
 })(jQuery);

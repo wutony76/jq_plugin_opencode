@@ -12,8 +12,8 @@
 } 
 
 .issue-group span.red {
-	margin-left: 5px;
-	margin-right: 5px;
+	/* margin-left: 5px;
+	margin-right: 5px; */
 	color:#ff0000;
 } 
 
@@ -51,6 +51,10 @@
 	padding-top:3%;
 	padding-right:4.5%;
 	border: 1px solid #ff00ff;
+}
+
+.balls-group .ball .ball-add {
+	background-image: unset;
 }
 
 .balls-group .ball .ball-num-blue {
