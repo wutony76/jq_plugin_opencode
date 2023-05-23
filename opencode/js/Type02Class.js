@@ -1,6 +1,6 @@
 class Type02Class extends BaseClass {
   constructor(root ,_settings) {
-    console.log('Type02Class');
+    // console.log('Type02Class');
     super(root, _settings);
     // this.root = root;
     // this.settings = _settings; 
@@ -11,7 +11,6 @@ class Type02Class extends BaseClass {
   }
 
   _addIssue (root, data) {
-    console.log('data t002>', data)
     const _settings = this.settings;
     const issueStr = data? data.issue: 'null';
     const linkArr = _settings.link? _settings.link: [];
@@ -24,7 +23,7 @@ class Type02Class extends BaseClass {
   } 
 
   _handleMenuHtml (linkArr) {
-    console.log(' _handleMenuHtml>', linkArr)
+    // console.log(' _handleMenuHtml>', linkArr)
     let contenthtml = '';
     linkArr.forEach((item) => {
       contenthtml += _addDivHtml(_addLinkHtml(item, 'link'), 'button');
@@ -32,4 +31,3 @@ class Type02Class extends BaseClass {
     return _addDivHtml(contenthtml, 'menu-group');
   }
 }
-

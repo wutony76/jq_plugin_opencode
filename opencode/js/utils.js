@@ -2,16 +2,17 @@ function test () {
   console.log('>>>>> util/test 123.')
 }
 
-function importCSS(src, look_for, onload) {
-  var s = document.createElement('link');
-  s.setAttribute('rel', 'stylesheet');
-  s.setAttribute('type', 'text/css');
-  s.setAttribute('href', src);
-  if (onload) wait_for_script_load(look_for, onload);
-  if (eval("typeof " + look_for) == 'undefined') {
-    var head = document.getElementsByTagName('head')[0];
-    if (head) head.appendChild(s);
-    else document.body.appendChild(s);
+let importClassArr = [];
+function importCSS(src) {
+  var link = document.createElement('link');
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = src;
+  var head = document.getElementsByTagName("head")[0];
+  if (!importClassArr.includes(src)) {
+    // document.body.appendChild(link);
+    head.appendChild(link);
+    importClassArr.push(src)
   }
 }
 
@@ -22,12 +23,16 @@ function importJS(src, look_for, onload) {
   if (onload) wait_for_script_load(look_for, onload);
   if (eval("typeof " + look_for) == 'undefined') {
     var head = document.getElementsByTagName('head')[0];
-    if (head) head.appendChild(s);
-    else document.body.appendChild(s);
+    if (!importClassArr.includes(src)) {
+      if (head) head.appendChild(s);
+      else document.body.appendChild(s);
+      importClassArr.push(src);
+    }
   }
 }
 
 function wait_for_script_load(look_for, callback) {
+  // console.log(look_for, eval("typeof " + look_for))
   var interval = setInterval(function() {
   if (eval("typeof " + look_for) != 'undefined') {
     clearInterval(interval);
