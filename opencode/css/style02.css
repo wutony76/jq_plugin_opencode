@@ -1,0 +1,156 @@
+:root {
+	--t2-border-color:#36a25e;
+	--t2-main-width:90%;
+
+	--t2-ft-title-color :#47423f;
+	--t2-ft-pet-color: #5b6060;
+	--t2-ft-link-color: #42bf61;
+}
+
+.jq-opencode-type002 {
+	color: var(--t2-ft-title-color);
+	font-size: 12px;
+	min-height: 100px;
+	border: 1px solid var(--t2-border-color);
+	border-radius: 3px;
+}
+/* header-group */
+.jq-opencode-type002 .header-group{
+	width: var(--t2-main-width);
+	height: 25%;
+	margin: 0 auto;
+
+	display: flex;
+	align-items:center ;
+	justify-content:flex-start;
+
+	font-size: 14px;
+}
+.jq-opencode-type002 .header-group .date-group{
+	color: #919d9f;
+}
+
+.jq-opencode-type002 .issue-group span.green {
+	color: #42bf61;
+}
+/* .jq-opencode-type002 .issue-group span.red {
+	color: #ff0000;
+} */
+
+.jq-opencode-type002 .menu-group{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.jq-opencode-type002 .menu-group .button {
+	margin-left: 10px;
+}
+.jq-opencode-type002 .menu-group .button .link {
+	color: var(--t2-ft-link-color);
+	text-decoration: none;
+}
+
+
+/* main-group */
+.jq-opencode-type002 .main-group{
+	width: var(--main-width);
+	/* height: 75%; */
+	/* border: 1px solid var(--border-color);
+	border-radius: 0px 0px 10px 10px; */
+
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+}
+.jq-opencode-type002 .balls-group {
+	width: 90%;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin: 0 auto;
+} 
+.jq-opencode-type002 .balls-group .ball {
+	width: 11.3%;
+	height:90%;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num {
+	/* background-image: url("../../opencode/images/type00/grey.jpg");
+	background-repeat: no-repeat;
+	background-position: center; */
+	/* background-size:auto ; */
+	/* background-size: 90%; */
+
+	width: 100%;
+	height: 50%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding-top:3%;
+	padding-right:4.5%;
+	/* border: 1px solid #ff00ff; */
+	position: relative;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num img {
+	width: 95%;
+	max-width: 50px;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num .num {
+	position: absolute;
+	font-weight: 300;
+	font-size: 20px;
+	padding-top: 4px;
+	padding-right: 4px;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num .add {
+	font-size: 49px;
+	font-weight: 200;
+	color: #ada9ad;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-add {
+	background-image: unset;
+	font-size: 35px;
+	color:#c4c4c4;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num-blue {
+	background-image: url("../../opencode/images/type00/blue.jpeg");
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num-red {
+	background-image: url("../../opencode/images/type00/red.jpeg");
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-num-green {
+	background-image: url("../../opencode/images/type00/green.jpeg");
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-space-15 {
+	height: 15%;
+}
+.jq-opencode-type002 .balls-group .ball .ball-space-10 {
+	height: 10%;
+}
+.jq-opencode-type002 .balls-group .ball .ball-space-125 {
+	height: 12.5%;
+}
+
+.jq-opencode-type002 .balls-group .ball .ball-pet {
+	height: 25%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 14px;
+	color:var(--ft-pet-color);
+}
