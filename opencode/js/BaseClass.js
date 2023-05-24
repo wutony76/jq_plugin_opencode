@@ -66,7 +66,7 @@ class BaseClass {
       self._clear(root);
       self._addIssue(root, _settings.info)
       self._addBallGroup(root,  _settings.info)
-      // setTimeout(updateData, delayTime);
+      setTimeout(updateData, delayTime);
     }
     setTimeout(updateData, delayTime);
   }
@@ -79,12 +79,13 @@ class BaseClass {
     const dateArr = data? data.date: ['-', '-', '-'];
     let issue = '第'.concat(_addSpanHtml(issueStr, ''), '期 最新开奖结果')
     let date = dateArr[0]+'年'+dateArr[1]+'月'+dateArr[2]+'日' 
-    let contentStr = _addDivHtml(issue, 'issue-group') + _addDivHtml(date, 'date-group') 
+    let contentStr = _addDivHtml(issue, 'issue-group') + _addDivHtml(date, 'date-group')  
     root.append(_addDivHtml(contentStr, 'header-group'))
   } 
   _findColor (val) {
     const _settings = this.settings 
     if (val === '+') return [null, 'ball-add'];
+    let imgColor = null;
     let num2color = null;
     let getColor = null;
     Object.keys(_settings.colors).some((color) => {
@@ -100,17 +101,17 @@ class BaseClass {
     if (getColor) {
       switch (getColor) {
         case 'red':
-          getColor = base64Img.red; 
+          imgColor = base64Img.red; 
           break;
         case 'blue':
-          getColor = base64Img.blue; 
+          imgColor = base64Img.blue; 
           break;
         case 'green':
-          getColor = base64Img.green; 
+          imgColor = base64Img.green; 
           break;
       }
     }
-    return [getColor, num2color]; 
+    return [imgColor, num2color, getColor]; 
   }
 
   _findWuXing (val) {
@@ -167,7 +168,7 @@ class BaseClass {
     const num = val == '+'?_addDivHtml(val, 'add') :_addDivHtml(val, 'num');
     const imgBallNum = fCOlor[0]? tagImg + num : num; 
  
-    let ballNum = _addDivHtml(imgBallNum, ballnumClass) 
+    let ballNum = fCOlor[0]? _addDivHtml(imgBallNum, ballnumClass) : _addDivHtml(imgBallNum, ballnumClass.concat(' ', 'ball-add')) 
     let ballPet = val2 ? _addDivHtml(val2, 'ball-pet'): ''
     let ballGroup = _addDivHtml('', 'ball-space-125') + ballNum + ballPet + _addDivHtml('', 'ball-space-125')
     return _addDivHtml( ballGroup, 'ball')

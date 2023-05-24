@@ -114,12 +114,15 @@
 	font-size: 49px;
 	font-weight: 200;
 	color: #ada9ad;
+
+	position: absolute;
+	top: -46;
 }
 
 .jq-opencode-type002 .balls-group .ball .ball-add {
-	background-image: unset;
+	/* background-image: unset;
 	font-size: 35px;
-	color:#c4c4c4;
+	color:#c4c4c4; */
 }
 
 .jq-opencode-type002 .balls-group .ball .ball-num-blue {

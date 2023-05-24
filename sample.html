@@ -1,0 +1,133 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>JQ SAMPLE</title>
+</head>
+<body>
+  <h5>type參數：type003</h5>
+  <div id="open-code-test5"></div>
+  <div id="open-code-test6"></div>
+  <h5>type參數：type001</h5>
+  <div id="open-code-test"></div>
+  <div id="open-code-test2"></div>
+  <h5>type參數：type002</h5>
+  <div id="open-code-test3"></div>
+  <div id="open-code-test4"></div>
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script src="opencode/opencode.js"></script>
+  <script>
+    $(function () {
+      /**
+       * use opencode example. 
+       * 
+       * width -寬度
+       * height -高度
+       * 
+       * colors -顏色設定表 
+       * wuXing -五行設定表 
+       * api -API設定 
+       * ts -API更新頻率 (微秒 1000 = 1秒，預設 5秒)
+       * apiGetInfoFunc -自定義解析api資料
+      */
+      $("#open-code-test").opencode({
+        // colors: colors,
+        // wuXing: wuXing,
+        width: '450px',
+        height: '115px',
+        type: 'type001',
+        // ts: 5000,
+        // api: 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138'
+        api: 'http://www.google.com',
+        apiGetInfoFunc: function () {
+          // const api = 'http://104.199.176.35/api/IssueOpenInfo/2032/2023138';
+          // return getInfo(api)
+
+          // test output Random data.
+          let arr = []
+          for (let i = 0; arr.length <= 6; i++) {
+            const n = getRandomInt(1, 49)
+            arr.push(prefixNum(n, 2))
+          }
+          return {
+            lotteryId: 2032,
+            issue: getRandomInt(1000000, 9999999).toString(),
+            openCode: arr.join(','),
+            pet: '兔',
+            date: ['2023', '05', '18']
+          }
+        }
+      });
+      $("#open-code-test2").opencode({});
+
+      $("#open-code-test3").opencode({
+        width: '450px',
+        // height: '115px',
+        link: [
+          ['開講直播', 'https:www.google.com'],
+          ['開獎歷史', 'https:www.google.com'],
+          ['b1', 'https:www.google.com'],
+          ['b2', 'https:www.google.com'],
+          ['b3', 'https:www.google.com'],
+        ],
+        type: 'type002',
+        apiGetInfoFunc: function () {
+          let arr = []
+          for (let i = 0; arr.length <= 6; i++) {
+            const n = getRandomInt(1, 49)
+            arr.push(prefixNum(n, 2))
+          }
+          return {
+            lotteryId: 2032,
+            issue: getRandomInt(1000000, 9999999).toString(),
+            openCode: arr.join(','),
+            pet: '兔',
+            date: ['2023', '05', '18']
+          }
+        }
+      });
+      $("#open-code-test4").opencode({
+        type: 'type002',
+        link: [
+          ['開講直播', 'https:www.google.com'],
+          ['開獎歷史', 'https:www.google.com'],
+          ['b1', 'https:www.google.com'],
+          ['b2', 'https:www.google.com'],
+          ['b3', 'https:www.google.com'],
+        ],
+      });
+
+
+      $("#open-code-test5").opencode({
+        width: '450px',
+        type: 'type003',
+        apiGetInfoFunc: function () {
+          let arr = []
+          const _statTime = getDateNow();
+          const _endTime = '2023-05-30 12:12:12';
+          const _time = new Date(_endTime).getTime() - new Date(_statTime).getTime();
+          for (let i = 0; arr.length <= 6; i++) {
+            const n = getRandomInt(1, 49)
+            arr.push(prefixNum(n, 2))
+          }
+
+          return {
+            lotteryId: 2032,
+            issue: getRandomInt(1000000, 9999999).toString(),
+            openCode: arr.join(','),
+            pet: '兔',
+            date: ['2023', '05', '18'],
+            statTime: _statTime,
+            endTime: _endTime,
+            countDownData: countDown(_statTime, _endTime)
+          }
+        }
+      });
+      $("#open-code-test6").opencode({
+        type: 'type003',
+      });
+    });
+  </script>
+  </body>
+</html>

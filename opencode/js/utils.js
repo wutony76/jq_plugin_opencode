@@ -2,17 +2,58 @@ function test () {
   console.log('>>>>> util/test 123.')
 }
 
-let importClassArr = [];
+function getDateNow() {
+  var d =  new Date(),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year =  d.getFullYear(),
+    hour =  d.getHours(),
+    min =  d.getMinutes(),
+    sec =  d.getSeconds();
+
+  if (month.length < 2)
+    month = '0' + month;
+  if (day.length < 2)
+    day = '0' + day;
+
+  return [year, month, day].join('-') +" "+ [hour, min, sec].join(':') ;
+}
+
+function countDown(startDate, endDate) {
+  const st = new Date(startDate).getTime();
+  const et = new Date(endDate).getTime();
+  const _time = et - st; 
+  const _s = parseInt(_time/1000); 
+  const _min = parseInt(_s/60);  
+  const _hour = parseInt(_s/(60*60));  
+  const _day = parseInt(_s/(60*60*24));  
+  // console.log( _day);
+  // console.log( _hour);
+  // console.log( _min);
+  // console.log( _s);
+  const res = {};
+  res.day = _day;  
+  res.hour = _hour-(_day*24);  
+  res.min = _min-(_day*24*60)-((_hour-(_day*24))*60);
+  res.sec = _s-(_day*24*60*60)-((_hour-(_day*24))*60*60)-((_min-(_day*24*60)-((_hour-(_day*24))*60))*60);
+
+  res.hour = prefixNum(res.hour, 2); 
+  res.min = prefixNum(res.min, 2); 
+  res.sec = prefixNum(res.sec, 2); 
+  return res 
+}
+
+let utilsClassArr = [];
 function importCSS(src) {
   var link = document.createElement('link');
   link.rel = "stylesheet";
   link.type = "text/css";
   link.href = src;
   var head = document.getElementsByTagName("head")[0];
-  if (!importClassArr.includes(src)) {
+  if (!utilsClassArr.includes(src)) {
     // document.body.appendChild(link);
     head.appendChild(link);
-    importClassArr.push(src)
+    utilsClassArr.push(src)
   }
 }
 
@@ -23,10 +64,10 @@ function importJS(src, look_for, onload) {
   if (onload) wait_for_script_load(look_for, onload);
   if (eval("typeof " + look_for) == 'undefined') {
     var head = document.getElementsByTagName('head')[0];
-    if (!importClassArr.includes(src)) {
+    if (!utilsClassArr.includes(src)) {
       if (head) head.appendChild(s);
       else document.body.appendChild(s);
-      importClassArr.push(src);
+      utilsClassArr.push(src);
     }
   }
 }

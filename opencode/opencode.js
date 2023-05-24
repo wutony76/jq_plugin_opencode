@@ -1,14 +1,10 @@
 (function($){
-  // import order js. css.
   // public 
+  document.write('<link rel=stylesheet type="text/css" href="opencode/css/style.css">');
   document.write('<script src="opencode/js/settings.js"></script>');
   document.write('<script src="opencode/js/utils.js"></script>');
-  // type001
-  document.write('<link rel=stylesheet type="text/css" href="opencode/css/style.css">');
-  // document.write('<script src="opencode/js/BaseClass.js"></script>');
-  // type002
-  // document.write('<link rel=stylesheet type="text/css" href="opencode/css/style02.css">');
-  // document.write('<script src="opencode/js/Type02Class.js"></script>');
+  document.write('<script src="opencode/js/BaseClass.js"></script>');
+  // document.getElementsByTagName('head')[0].aappendChild(document.createElement('script').src);
 
   $.fn.opencode = function(settings){
     const root = $(this)
@@ -33,9 +29,7 @@
     switch(type){
       case TYPE.type01:
         _settings.mainClass = 'jq-opencode-type001';
-        importJS("opencode/js/BaseClass.js", "BaseClass", () => { 
-          new BaseClass(root, _settings).init();
-        });
+        new BaseClass(root, _settings).init();
         break;
       case TYPE.type02:
         _settings.mainClass = 'jq-opencode-type002';
@@ -45,11 +39,18 @@
           new Type02Class(root, _settings).init();
         });
         break;
+      case TYPE.type03:
+        _settings.mainClass = 'jq-opencode-type003';
+        _settings.ts = 1000;
+        keyClass = "Type03Class"; 
+        importCSS("opencode/css/style03.css")
+        importJS("opencode/js/Type03Class.js", keyClass, () => { 
+          new Type03Class(root, _settings).init();
+        });
+        break;
       default:
         _settings.mainClass = 'jq-opencode-type001';
-        importJS("opencode/js/BaseClass.js", "BaseClass", () => { 
-          new BaseClass(root, _settings).init();
-        });
+        new BaseClass(root, _settings).init();
         break;
     }
   }

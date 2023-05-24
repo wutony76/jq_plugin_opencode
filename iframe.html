@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>opencode</title>
+</head>
+<body>
+  <div id="open-code-test"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script src="opencode/opencode.js"></script>
+  <script>
+    $(function () {
+      $("#open-code-test").opencode({
+        type: 'type003',
+        apiGetInfoFunc: function () {
+          let arr = []
+          const _statTime = getDateNow();
+          const _endTime = '2023-05-30 12:12:12';
+          const _time = new Date(_endTime).getTime() - new Date(_statTime).getTime();
+          for (let i = 0; arr.length <= 6; i++) {
+            const n = getRandomInt(1, 49)
+            arr.push(prefixNum(n, 2))
+          }
+
+          return {
+            lotteryId: 2032,
+            issue: getRandomInt(1000000, 9999999).toString(),
+            openCode: arr.join(','),
+            pet: '兔',
+            date: ['2023', '05', '18'],
+            statTime: _statTime,
+            endTime: _endTime,
+            countDownData: countDown(_statTime, _endTime)
+          }
+        }
+      });
+    });
+  </script>
+  </body>
+</html>
